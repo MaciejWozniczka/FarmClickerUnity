@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -19,7 +17,7 @@ public class AssetPreviewer : Editor
         tex1 = AssetPreview.GetAssetPreview(item.ItemImage);
         GUILayout.Label(tex1);
 
-        tex2 = AssetPreview.GetAssetPreview(item.ItemImage);
+        tex2 = AssetPreview.GetAssetPreview(item.UnknownItemImage);
         GUILayout.Label(tex2);
 
         GUILayout.EndHorizontal();
