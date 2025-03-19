@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64761dd7496b6f5428377ff72b0c4698, type: 3}
+  m_Name: 4 Goat
+  m_EditorClassIdentifier: 
+  ItemName: Chicken
+  BasePrice: 4000
+  BaseIncome: 80
+  ItemImage: {fileID: 6608656155100131355, guid: 01bcfdae19853c340a3d33d9777fd4a6, type: 3}
+  UnknownItemImage: {fileID: -9147654999484217358, guid: 5353f6695e144ab499e29a807300a807, type: 3}
