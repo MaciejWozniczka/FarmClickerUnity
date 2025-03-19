@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 20a16d6bf9d0e5348a83e85876c44f66
+guid: 5353f6695e144ab499e29a807300a807
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3023850045430360540
-    second: Unknown_0
+      213: -9147654999484217358
+    second: Ukryte_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unknown_0
+      name: Ukryte_0
       rect:
         serializedVersion: 2
         x: 0
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 426131c97602906d0800000000000000
-      internalID: -3023850045430360540
+      spriteID: 2f7caeb8e300d0180800000000000000
+      internalID: -9147654999484217358
       vertices: []
       indices: 
       edges: []
