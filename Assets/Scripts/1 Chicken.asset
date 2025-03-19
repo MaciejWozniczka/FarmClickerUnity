@@ -16,4 +16,4 @@ MonoBehaviour:
   BasePrice: 15
   BaseIncome: 0.1
   ItemImage: {fileID: 7739999482313934622, guid: f78eafda21ac22e4e83b743a015cbf81, type: 3}
-  UnknownItemImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  UnknownItemImage: {fileID: -9147654999484217358, guid: 5353f6695e144ab499e29a807300a807, type: 3}
