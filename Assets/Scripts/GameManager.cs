@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     // Items
     [System.Serializable]
     public class AnyItem
@@ -31,6 +33,11 @@ public class GameManager : MonoBehaviour
     [Header("USER INTERFACE")]
     public GameObject ItemHolder;
     public Transform Grid;
+
+    void Awake()
+    {
+        instance = this;   
+    }
 
     // Initialization
     void Start()
@@ -77,7 +84,7 @@ public class GameManager : MonoBehaviour
                     ItemList[i].Holder.ItemNameText.text = ItemList[i].Item.ItemName;
                     ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
                     ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
+                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
                 }
                 else
                 {
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
                     ItemList[i].Holder.ItemNameText.text = "?????";
                     ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
                     ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
+                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
                 }
 
                 ItemList[i].Holder.BuyButton.Id = i;

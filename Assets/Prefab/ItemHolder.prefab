@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 3873013585804520477}
+  BuyButton: {fileID: 6574162676015873287}
   ItemNameText: {fileID: 8503243708040982952}
   IncomeText: {fileID: 3444804657045333037}
   AmountText: {fileID: 4550886231414824704}
