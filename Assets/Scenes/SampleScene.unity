@@ -199,6 +199,11 @@ MonoBehaviour:
     Unlocked: 0
     Created: 0
     Holder: {fileID: 0}
+  Money: 0
+  TotalMoneyText: {fileID: 0}
+  TotalIncomeText: {fileID: 0}
+  ItemHolder: {fileID: 0}
+  Grid: {fileID: 0}
 --- !u!4 &69965312
 Transform:
   m_ObjectHideFlags: 0
