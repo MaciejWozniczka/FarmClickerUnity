@@ -34,12 +34,11 @@ public class GameManager : MonoBehaviour
     public GameObject ItemHolder;
     public Transform Grid;
 
+    // Initialization
     void Awake()
     {
         instance = this;   
     }
-
-    // Initialization
     void Start()
     {
         FillList();
@@ -99,5 +98,37 @@ public class GameManager : MonoBehaviour
                 ItemList[i].Created = true;
             }
         }
+    }
+
+    public void BuyItem(int id)
+    {
+        if (Money < ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount))
+        {
+            Debug.Log("Not enough money");
+            return;
+        }
+
+        Money -= ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount);
+
+        // UPDATE UI IN HOLDER
+        if (ItemList[id].ItemAmount < 1)
+        {
+            ItemList[id].Holder.itemImage.sprite = ItemList[id].Item.ItemImage;
+            ItemList[id].Holder.ItemNameText.text = ItemList[id].Item.ItemName;
+        }
+
+        ItemList[id].ItemAmount++;
+        ItemList[id].Holder.AmountText.text = "Ilość: " + ItemList[id].ItemAmount;
+        ItemList[id].Holder.IncomeText.text = "Dochód: " + ItemList[id].Item.CalculateIncome(ItemList[id].ItemAmount);
+        ItemList[id].Holder.CostText.text = "Koszt: " + ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount);
+            
+        // UNLOCK NEXT DRINK
+        if (id < ItemList.Count - 1 && ItemList[id].ItemAmount > 0)
+        {
+            ItemList[id + 1].Unlocked = true;
+            FillList();
+        }
+
+        // UPDATE UI
     }
 }
