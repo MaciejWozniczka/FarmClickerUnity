@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -128,7 +129,11 @@ public class GameManager : MonoBehaviour
             ItemList[id + 1].Unlocked = true;
             FillList();
         }
+    }
 
-        // UPDATE UI
+    // UPDATE UI
+    public void AddMoney(int clickAmount)
+    {
+        Money += clickAmount;
     }
 }
