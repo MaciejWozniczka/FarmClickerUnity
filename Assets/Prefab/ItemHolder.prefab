@@ -467,7 +467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.0448, y: -20}
+  m_AnchoredPosition: {x: 8.0448, y: -19.5}
   m_SizeDelta: {x: 104.5195, y: 25.928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1367902916877277036
@@ -633,9 +633,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 594d79f7ab665e447a43a1a346476647, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 6574162676015873287}
+        m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
+        m_MethodName: BuyAnItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
