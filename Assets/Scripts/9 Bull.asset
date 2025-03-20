@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64761dd7496b6f5428377ff72b0c4698, type: 3}
   m_Name: 9 Bull
   m_EditorClassIdentifier: 
-  ItemName: Chicken
+  ItemName: Byk
   BasePrice: 5000000
   BaseIncome: 20000
   ItemImage: {fileID: -2502367154523276342, guid: f2b306041104a7c4caa35541b527d908, type: 3}

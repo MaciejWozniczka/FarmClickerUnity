@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64761dd7496b6f5428377ff72b0c4698, type: 3}
   m_Name: 1 Rabbit
   m_EditorClassIdentifier: 
-  ItemName: Chicken
+  ItemName: "Kr\xF3lik"
   BasePrice: 50
   BaseIncome: 3
   ItemImage: {fileID: -8262372942247120890, guid: 13a61da4ba1ce3446aee99e01b535ba0, type: 3}

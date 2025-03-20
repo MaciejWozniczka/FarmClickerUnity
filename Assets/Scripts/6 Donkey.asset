@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64761dd7496b6f5428377ff72b0c4698, type: 3}
   m_Name: 6 Donkey
   m_EditorClassIdentifier: 
-  ItemName: Chicken
+  ItemName: "Osio\u0142"
   BasePrice: 60000
   BaseIncome: 700
   ItemImage: {fileID: -4186367262256377215, guid: 579d320b60a851f44a1971f7a3c89c7e, type: 3}
