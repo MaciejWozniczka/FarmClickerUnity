@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FillList();
+        UpdateMoneyUI();
+        UpdateIncomeUI();
         StartCoroutine(Tick());
     }
 
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour
                 {
                     Money += item.Item.CalculateIncome(item.ItemAmount);
                     Money = (int)Mathf.Round(Money);
+
+                    UpdateMoneyUI();
                 }
             }
         }
@@ -129,11 +133,36 @@ public class GameManager : MonoBehaviour
             ItemList[id + 1].Unlocked = true;
             FillList();
         }
+
+        UpdateMoneyUI();
+        UpdateIncomeUI();
     }
 
     // UPDATE UI
     public void AddMoney(int clickAmount)
     {
         Money += clickAmount;
+
+        UpdateMoneyUI();
+    }
+
+    void UpdateMoneyUI()
+    {
+        TotalMoneyText.text = "Total Money: " + Money.ToString();
+    }
+
+    void UpdateIncomeUI()
+    {
+        float totalIncome = 0;
+
+        foreach(AnyItem item in ItemList)
+        {
+            if (item.ItemAmount > 0)
+            {
+                totalIncome += item.Item.CalculateIncome(item.ItemAmount);
+            }
+        }
+
+        TotalIncomeText.text = "Total Income: " + totalIncome;
     }
 }

@@ -914,7 +914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Total income: 0'
+  m_Text: 'Total Income: 0'
 --- !u!1 &765224724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Total money: 0'
+  m_Text: 'Total Money: 0'
 --- !u!1 &1655644251
 GameObject:
   m_ObjectHideFlags: 0
