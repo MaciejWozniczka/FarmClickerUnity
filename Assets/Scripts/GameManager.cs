@@ -44,7 +44,15 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        FillList();
+        if (PlayerPrefs.HasKey("IdleSave"))
+        {
+            LoadGame();
+        }
+        else
+        {
+            FillList();
+        }
+
         UpdateMoneyUI();
         UpdateIncomeUI();
         StartCoroutine(Tick());
@@ -79,33 +87,45 @@ public class GameManager : MonoBehaviour
                     // Skip adding duplicates
                     continue;
                 }
-                
-                GameObject itemHolder = Instantiate(ItemHolder, Grid, false) as GameObject;
-                ItemList[i].Holder = itemHolder.GetComponent<ItemHolder>();
-                    
-                if (ItemList[i].ItemAmount > 0)
-                {
-                    ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.ItemImage;
-                    ItemList[i].Holder.ItemNameText.text = ItemList[i].Item.ItemName;
-                    ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
-                    ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
-                }
-                else
-                {
-                    ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.UnknownItemImage;
-                    ItemList[i].Holder.ItemNameText.text = "?????";
-                    ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
-                    ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-                    ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
-                }
 
-                ItemList[i].Holder.BuyButton.Id = i;
-                ItemList[i].Created = true;
+                FillItemList(i);
             }
         }
     }
-    
+    void FillSingleItem(int i)
+    {
+        if (ItemList[i].Unlocked)
+        {
+            FillItemList(i);
+        }
+    }
+
+    private void FillItemList(int i)
+    {
+        GameObject itemHolder = Instantiate(ItemHolder, Grid, false) as GameObject;
+        ItemList[i].Holder = itemHolder.GetComponent<ItemHolder>();
+
+        if (ItemList[i].ItemAmount > 0)
+        {
+            ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.ItemImage;
+            ItemList[i].Holder.ItemNameText.text = ItemList[i].Item.ItemName;
+            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
+            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
+            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
+        }
+        else
+        {
+            ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.UnknownItemImage;
+            ItemList[i].Holder.ItemNameText.text = "?????";
+            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
+            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
+            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
+        }
+
+        ItemList[i].Holder.BuyButton.Id = i;
+        ItemList[i].Created = true;
+    }
+
     // UI
     public void BuyItem(int id)
     {
@@ -204,9 +224,16 @@ public class GameManager : MonoBehaviour
                 {
                     ItemList[i + 1].Unlocked = true;
                 }
+
+                FillSingleItem(i);
             }
 
             Money = int.Parse(dataList.LastOrDefault());
+
+            FillList();
+
+            UpdateMoneyUI();
+            UpdateIncomeUI();
         }
     }
 }
