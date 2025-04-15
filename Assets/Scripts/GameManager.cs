@@ -112,17 +112,17 @@ public class GameManager : MonoBehaviour
         {
             ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.ItemImage;
             ItemList[i].Holder.ItemNameText.text = ItemList[i].Item.ItemName;
-            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
-            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
+            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount.ToString("N0");
+            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount).ToString("N0");
+            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount).ToString("N0");
         }
         else
         {
             ItemList[i].Holder.itemImage.sprite = ItemList[i].Item.UnknownItemImage;
             ItemList[i].Holder.ItemNameText.text = "?????";
-            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount;
-            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount);
-            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount);
+            ItemList[i].Holder.AmountText.text = "Ilość: " + ItemList[i].ItemAmount.ToString("N0");
+            ItemList[i].Holder.IncomeText.text = "Dochód: " + ItemList[i].Item.CalculateIncome(ItemList[i].ItemAmount).ToString("N0");
+            ItemList[i].Holder.CostText.text = "Koszt: " + ItemList[i].Item.CalculateCost(ItemList[i].ItemAmount).ToString("N0");
         }
 
         ItemList[i].Holder.BuyButton.Id = i;
@@ -148,9 +148,9 @@ public class GameManager : MonoBehaviour
         }
 
         ItemList[id].ItemAmount++;
-        ItemList[id].Holder.AmountText.text = "Ilość: " + ItemList[id].ItemAmount;
-        ItemList[id].Holder.IncomeText.text = "Dochód: " + ItemList[id].Item.CalculateIncome(ItemList[id].ItemAmount);
-        ItemList[id].Holder.CostText.text = "Koszt: " + ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount);
+        ItemList[id].Holder.AmountText.text = "Ilość: " + ItemList[id].ItemAmount.ToString("N0");
+        ItemList[id].Holder.IncomeText.text = "Dochód: " + ItemList[id].Item.CalculateIncome(ItemList[id].ItemAmount).ToString("N0");
+        ItemList[id].Holder.CostText.text = "Koszt: " + ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount).ToString("N0");
             
         // UNLOCK NEXT DRINK
         if (id < ItemList.Count - 1 && ItemList[id].ItemAmount > 0)
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
     }
     void UpdateMoneyUI()
     {
-        TotalMoneyText.text = "Total Money: " + Money.ToString();
+        TotalMoneyText.text = "Total Money: " + Money.ToString("N0");
     }
     void UpdateIncomeUI()
     {
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        TotalIncomeText.text = "Total Income: " + totalIncome;
+        TotalIncomeText.text = "Total Income: " + totalIncome.ToString("N0");
     }
     void SaveGame()
     {
@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
     void AutoSave()
     {
         SaveGame();
-        
+
         SaveText.SetActive(true);
 
         Invoke("AutoSave", 60f);
