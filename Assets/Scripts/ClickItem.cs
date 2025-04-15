@@ -14,15 +14,15 @@ public class ClickItem : ScriptableObject
     public Sprite ItemImage; 
     public Sprite UnknownItemImage;
 
-    public float CalculateCost(int amount)
+    public int CalculateCost(int amount)
     {
         float newPrice = BasePrice * MathF.Pow(Multiplier, amount);
-        float roundedPrice = (float)Mathf.Round(newPrice*100) / 100;
+        int roundedPrice = (int)Mathf.Round(newPrice);
         return roundedPrice;
     }
 
-    public float CalculateIncome(int amount)
+    public int CalculateIncome(int amount)
     {
-        return BaseIncome * amount;
+        return (int)Mathf.Round(BaseIncome * amount);
     }
 }

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     // Money
     [Header("MONEY")]
-    public float Money;
+    public int Money;
     public Text TotalMoneyText;
     public Text TotalIncomeText;
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
                 if (item.ItemAmount > 0)
                 {
                     Money += item.Item.CalculateIncome(item.ItemAmount);
-                    Money = (float)Mathf.Round(Money * 100) / 100;
+                    Money = (int)Mathf.Round(Money);
                 }
             }
         }
