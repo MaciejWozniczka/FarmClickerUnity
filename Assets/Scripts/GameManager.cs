@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         UpdateMoneyUI();
         UpdateIncomeUI();
         StartCoroutine(Tick());
+        AutoSave();
     }
 
     IEnumerator Tick()
@@ -164,5 +166,31 @@ public class GameManager : MonoBehaviour
         }
 
         TotalIncomeText.text = "Total Income: " + totalIncome;
+    }
+
+    void SaveGame()
+    {
+        var saveModel = new SaveLoad.SaveModel()
+        {
+            Money = Money
+        };
+
+        for (int i = 0; i < 10; i++)
+        {
+            var prop = typeof(SaveLoad.SaveModel).GetProperty($"Item{i}");
+
+            if (prop != null && i < ItemList.Count)
+            {
+                prop.SetValue(saveModel, ItemList[i].ItemAmount);
+            }
+        }
+        
+        SaveLoad.Save(saveModel);
+    }
+
+    void AutoSave()
+    {
+        SaveGame();
+        Invoke("AutoSave", 60f);
     }
 }
