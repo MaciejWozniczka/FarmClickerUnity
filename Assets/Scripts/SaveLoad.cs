@@ -42,4 +42,13 @@ public static class SaveLoad
 
         Debug.Log("Game saved");
     }
+
+    public static string Load()
+    {
+        string data = PlayerPrefs.GetString("IdleSave");
+
+        Debug.Log("Game loaded");
+
+        return data;
+    }
 }
