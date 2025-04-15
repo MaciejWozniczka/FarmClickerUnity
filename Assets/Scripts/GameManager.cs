@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,7 +50,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Tick());
         AutoSave();
     }
-
     IEnumerator Tick()
     {
         while(true)
@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     void FillList()
     {
         for (var i = 0; i < ItemList.Count; i++)
@@ -106,7 +105,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
+    // UI
     public void BuyItem(int id)
     {
         if (Money < ItemList[id].Item.CalculateCost(ItemList[id].ItemAmount))
@@ -139,20 +139,16 @@ public class GameManager : MonoBehaviour
         UpdateMoneyUI();
         UpdateIncomeUI();
     }
-
-    // UPDATE UI
     public void AddMoney(int clickAmount)
     {
         Money += clickAmount;
 
         UpdateMoneyUI();
     }
-
     void UpdateMoneyUI()
     {
         TotalMoneyText.text = "Total Money: " + Money.ToString();
     }
-
     void UpdateIncomeUI()
     {
         float totalIncome = 0;
@@ -167,7 +163,6 @@ public class GameManager : MonoBehaviour
 
         TotalIncomeText.text = "Total Income: " + totalIncome;
     }
-
     void SaveGame()
     {
         var saveModel = new SaveLoad.SaveModel()
@@ -187,10 +182,31 @@ public class GameManager : MonoBehaviour
         
         SaveLoad.Save(saveModel);
     }
-
     void AutoSave()
     {
         SaveGame();
         Invoke("AutoSave", 60f);
+    }
+    void LoadGame()
+    {
+        if (PlayerPrefs.HasKey("IdleSave"))
+        {
+            string data = SaveLoad.Load();
+
+            string[] dataList = data.Split("|" [0]);
+
+            for (int i = 0; i < dataList.Length-1; i++)
+            {
+                int temp = int.Parse(dataList[i]);
+                ItemList[i].ItemAmount = temp;
+
+                if (temp > 0 && i + 1 < ItemList.Count)
+                {
+                    ItemList[i + 1].Unlocked = true;
+                }
+            }
+
+            Money = int.Parse(dataList.LastOrDefault());
+        }
     }
 }
