@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [Header("USER INTERFACE")]
     public GameObject ItemHolder;
     public Transform Grid;
+    public GameObject SaveText;
 
     // Initialization
     void Awake()
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        SaveText.SetActive(false);
+
         if (PlayerPrefs.HasKey("IdleSave"))
         {
             LoadGame();
@@ -205,6 +208,9 @@ public class GameManager : MonoBehaviour
     void AutoSave()
     {
         SaveGame();
+        
+        SaveText.SetActive(true);
+
         Invoke("AutoSave", 60f);
     }
     void LoadGame()
